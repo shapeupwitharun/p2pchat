@@ -13,6 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: unzip -q P2PChat.zip
+      - run: printf "android.useAndroidX=true\norg.gradle.jvmargs=-Xmx3g\n" > P2PChat/gradle.properties
       - run: sed -i "s#const val URL = \".*\"#const val URL = \"$URL\"#" P2PChat/app/src/main/java/com/example/p2pchat/Signaling.kt
       - uses: actions/setup-java@v4
         with:
